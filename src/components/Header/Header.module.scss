@@ -1,0 +1,18 @@
+@use '../../styles/tokens' as vars;
+
+.header {
+  width: 100%;
+  background: vars.$color-primary;
+
+  &__content {
+    max-width: 800px;
+    //margin: 0 auto;
+    padding: 27px 37px;
+  }
+
+  &__title {
+    color: vars.$color-text-inverse;
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+  }
+}

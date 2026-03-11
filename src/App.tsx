@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SignupModal } from './components/SignupModal';
 import { CreatePost } from './components/CreatePost';
+import { Header } from './components/Header';
 
 const App = () => {
   const [username, setUsername] = useState('');
@@ -10,9 +11,12 @@ const App = () => {
       {!username ? (
         <SignupModal onEnter={setUsername} />
       ) : (
-        <main>
-          <CreatePost/>
-        </main>
+        <>
+          <Header />
+          <main>
+            <CreatePost />
+          </main>
+        </>
       )}
     </>
   );
