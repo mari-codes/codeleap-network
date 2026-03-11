@@ -1,0 +1,51 @@
+@use '../../styles/tokens' as vars;
+
+.button {
+  height: 32px;
+  border-radius: vars.$radius-sm;
+  font-size: vars.$font-sm;
+  font-weight: vars.$font-weight-bold;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: vars.$color-border-modal;
+    color: vars.$color-text-inverse;
+  }
+
+  &--default {
+    width: 120px;
+  }
+
+  &--compact {
+    width: 111px;
+  }
+
+  &--primary {
+    background: vars.$color-primary;
+    color: vars.$color-text-inverse;
+    border: none;
+  }
+
+  &--danger {
+    background: vars.$color-danger;
+    color: vars.$color-text-inverse;
+    border: none;
+  }
+
+  &--success {
+    background: vars.$color-success;
+    color: vars.$color-text-inverse;
+    border: none;
+  }
+
+  &--outline {
+    background: vars.$color-bg-card;
+    color: vars.$color-text-primary;
+    border: 1px solid vars.$color-border-modal;
+  }
+}

@@ -1,0 +1,36 @@
+@use '../../styles/tokens' as vars;
+
+.textareaField {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-xs;
+  width: 100%;
+
+  &--md {
+    max-width: 612px;
+  }
+
+  &--lg {
+    max-width: 704px;
+  }
+
+  &__label {
+    font-size: vars.$font-sm;
+    color: vars.$color-text-primary;
+  }
+
+  &__control {
+    width: 100%;
+    min-height: 74px;
+    padding: 8px 10px;
+    border: 1px solid vars.$color-text-secondary;
+    border-radius: vars.$radius-sm;
+    color: vars.$color-text-primary;
+    font-size: vars.$font-xs;
+    resize: none;
+
+    &::placeholder {
+      color: vars.$color-text-placeholder;
+    }
+  }
+}
