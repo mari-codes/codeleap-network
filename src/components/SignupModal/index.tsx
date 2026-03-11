@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styles from './SignupModal.module.scss';
-import { Input } from '../Input';
-import Button from '../Button';
+import { Input } from '@/components/Input';
+import Button from '@/components/Button';
 import type { SignupModalProps } from './types';
-
 export const SignupModal = ({ onEnter }: SignupModalProps) => {
   const [username, setUsername] = useState('');
 

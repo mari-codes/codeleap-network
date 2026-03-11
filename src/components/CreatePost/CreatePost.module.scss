@@ -1,0 +1,31 @@
+@use '../../styles/tokens' as vars;
+
+.createPost {
+  width: 100%;
+  max-width: 752px;
+  background: vars.$color-bg-card;
+  border: 1px solid vars.$color-border-modal;
+  border-radius: vars.$radius-md;
+  padding: vars.$space-md;
+
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-sm;
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-primary;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-md;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

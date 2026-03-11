@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SignupModal } from './components/SignupModal';
+import { CreatePost } from './components/CreatePost';
 
 const App = () => {
   const [username, setUsername] = useState('');
@@ -10,7 +11,7 @@ const App = () => {
         <SignupModal onEnter={setUsername} />
       ) : (
         <main>
-          <h1>Username: {username}</h1>
+          <CreatePost/>
         </main>
       )}
     </>
