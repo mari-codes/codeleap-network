@@ -1,0 +1,35 @@
+@use '../../styles/tokens' as vars;
+
+.signupModal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: vars.$color-bg-page;
+
+  &__card {
+    width: 100%;
+    max-width: 500px;
+    min-height: 205px;
+    background: vars.$color-bg-card;
+    border: 1px solid vars.$color-text-placeholder;
+    border-radius: vars.$radius-md;
+    padding: vars.$space-md;
+
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-sm;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-primary;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

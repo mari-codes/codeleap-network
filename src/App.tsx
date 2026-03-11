@@ -1,29 +1,20 @@
-import Button from './components/Button';
-import { Input } from './components/Input';
-import { Textarea } from './components/TextArea';
+import { useState } from 'react';
+import { SignupModal } from './components/SignupModal';
 
-function App() {
+const App = () => {
+  const [username, setUsername] = useState('');
+
   return (
     <>
-      <Button variant="primary" size="compact">
-        Enter
-      </Button>
-
-      {/* <Button variant="primary" disabled={!title.trim() || !content.trim()}>Create</Button> */}
-
-      <Button variant="outline">Cancel</Button>
-
-      <Button variant="danger">Delete</Button>
-
-      <Button variant="success">Save</Button>
-
-      <Input label="Title" placeholder="Hello world" inputSize="lg" />
-
-      <Textarea label="Content" placeholder="Content here" textareaSize="lg" />
-
-      <Textarea label="Content" placeholder="Content here" textareaSize="md" />
+      {!username ? (
+        <SignupModal onEnter={setUsername} />
+      ) : (
+        <main>
+          <h1>Username: {username}</h1>
+        </main>
+      )}
     </>
   );
-}
+};
 
 export default App;
