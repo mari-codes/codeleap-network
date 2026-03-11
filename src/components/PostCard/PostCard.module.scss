@@ -1,0 +1,76 @@
+@use '../../styles/tokens' as vars;
+
+.postCard {
+  width: 100%;
+  max-width: 752px;
+  background: vars.$color-bg-card;
+  border: 1px solid vars.$color-border-modal;
+  border-radius: vars.$radius-md;
+  overflow: hidden;
+
+  &__header {
+    height: 70px;
+    background: vars.$color-primary;
+    padding: 0 vars.$space-md;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-inverse;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-md;
+  }
+
+  &__actionButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: vars.$color-text-inverse;
+    cursor: pointer;
+  }
+
+  &__body {
+    padding: vars.$space-md;
+    display: flex;
+    flex-direction: column;
+    //gap: vars.$space-sm;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: vars.$space-sm;
+  }
+
+  &__author {
+    font-size: vars.$font-md;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-secondary;
+  }
+
+  &__date {
+    font-size: vars.$font-md;
+    font-weight: vars.$font-weight-regular;
+    color: vars.$color-text-secondary;
+  }
+
+  &__content {
+    font-size: vars.$font-md;
+    font-weight: vars.$font-weight-regular;
+    color: vars.$color-text-primary;
+    word-break: break-word;
+  }
+}
