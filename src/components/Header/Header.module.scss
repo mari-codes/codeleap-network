@@ -6,13 +6,24 @@
 
   &__content {
     max-width: 800px;
-    //margin: 0 auto;
     padding: 27px 37px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__title {
     color: vars.$color-text-inverse;
     font-size: vars.$font-lg;
     font-weight: vars.$font-weight-bold;
+  }
+
+  &__logout {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: vars.$color-text-inverse;
+    display: flex;
+    align-items: center;
   }
 }

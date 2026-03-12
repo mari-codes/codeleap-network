@@ -8,7 +8,19 @@ import { fetchPosts, createPost, deletePost, updatePost } from '@/api/posts';
 import styles from './App.module.scss';
 
 const App = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => localStorage.getItem('username') || '');
+
+  const queryClient = useQueryClient();
+
+  const handleSignup = (name: string) => {
+    localStorage.setItem('username', name);
+    setUsername(name);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    setUsername('');
+  };
 
   const {
     data: posts = [],
@@ -18,8 +30,6 @@ const App = () => {
     queryKey: ['posts'],
     queryFn: fetchPosts,
   });
-
-  const queryClient = useQueryClient();
 
   const createPostMutation = useMutation({
     mutationFn: createPost,
@@ -59,12 +69,12 @@ const App = () => {
   };
 
   if (!username) {
-    return <SignupModal onEnter={setUsername} />;
+    return <SignupModal onEnter={handleSignup} />;
   }
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Header onLogout={handleLogout} />
       <main className={styles.main}>
         <CreatePost onCreate={handleCreatePost} />
 
