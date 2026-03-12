@@ -1,0 +1,15 @@
+@use '../../styles/tokens' as vars;
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  gap: vars.$space-xxs;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: vars.$color-text-secondary;
+
+  &--liked {
+    color: vars.$color-danger;
+  }
+}

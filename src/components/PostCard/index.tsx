@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PostCard.module.scss';
 import type { PostCardProps } from './types';
 import { Icon } from '@iconify/react';
 import { formatDate } from '@/utils/formatDate';
 import { DeleteModal } from '@/components/DeleteModal';
 import { EditModal } from '@/components/EditModal';
+import { LikeButton } from '@/components/LikeButton';
 
 export const PostCard = ({
   id,
@@ -18,6 +19,24 @@ export const PostCard = ({
 }: PostCardProps) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(0);
+
+  const likedStorageKey = `post-liked-${id}`;
+  const likesStorageKey = `post-likes-${id}`;
+
+  useEffect(() => {
+    const savedLiked = localStorage.getItem(likedStorageKey);
+    const savedLikes = localStorage.getItem(likesStorageKey);
+
+    if (savedLiked !== null) {
+      setLiked(JSON.parse(savedLiked));
+    }
+
+    if (savedLikes !== null) {
+      setLikes(JSON.parse(savedLikes));
+    }
+  }, [likedStorageKey, likesStorageKey]);
 
   const handleConfirmDelete = () => {
     onDelete?.(id);
@@ -27,6 +46,17 @@ export const PostCard = ({
   const handleSaveEdit = (newTitle: string, newContent: string) => {
     onUpdate?.(id, newTitle, newContent);
     setIsEditOpen(false);
+  };
+
+  const handleToggleLike = () => {
+    const nextLiked = !liked;
+    const nextLikes = nextLiked ? likes + 1 : Math.max(likes - 1, 0);
+
+    setLiked(nextLiked);
+    setLikes(nextLikes);
+
+    localStorage.setItem(likedStorageKey, JSON.stringify(nextLiked));
+    localStorage.setItem(likesStorageKey, JSON.stringify(nextLikes));
   };
 
   return (
@@ -65,6 +95,10 @@ export const PostCard = ({
           </div>
 
           <p className={styles.postCard__content}>{content}</p>
+
+          <div className={styles.postCard__footer}>
+            <LikeButton liked={liked} count={likes} onToggle={handleToggleLike} />
+          </div>
         </div>
       </article>
 
