@@ -3,12 +3,27 @@ import styles from './CreatePost.module.scss';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/TextArea';
 import Button from '@/components/Button';
+import type { CreatePostProps } from './types';
 
-export const CreatePost = () => {
+export const CreatePost = ({ onCreate }: CreatePostProps) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const isDisabled = !title.trim() || !content.trim();
+
+  const handleCreate = () => {
+    const trimmedTitle = title.trim();
+    const trimmedContent = content.trim();
+
+    if (!trimmedTitle || !trimmedContent) {
+      return;
+    }
+
+    onCreate(trimmedTitle, trimmedContent);
+
+    setTitle('');
+    setContent('');
+  };
 
   return (
     <section className={styles.createPost}>
@@ -32,7 +47,7 @@ export const CreatePost = () => {
         />
 
         <div className={styles.createPost__actions}>
-          <Button variant="primary" disabled={isDisabled}>
+          <Button variant="primary" disabled={isDisabled} onClick={handleCreate}>
             Create
           </Button>
         </div>
