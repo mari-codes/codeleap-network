@@ -1,0 +1,16 @@
+@use './styles/tokens' as vars;
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background-color: vars.$color-bg-card;
+}
+
+.main {
+  width: 100%;
+  max-width: 752px;
+  margin: 0 auto;
+  padding: 24px 0;
+}

@@ -1,6 +1,8 @@
+@use '../../styles/tokens' as vars;
+
 .postList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
+  gap: vars.$space-md;
+  margin-top: vars.$space-md;
 }

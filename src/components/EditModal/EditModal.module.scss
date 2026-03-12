@@ -1,0 +1,41 @@
+@use '../../styles/tokens' as vars;
+
+.editModalOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: vars.$color-overlay;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.editModal {
+  width: 660px;
+  height: 334px;
+  background: vars.$color-bg-card;
+  border: 1px solid vars.$color-border-modal;
+  border-radius: vars.$radius-md;
+
+  padding: vars.$space-md;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: vars.$space-md;
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-primary;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: vars.$space-sm;
+  }
+}

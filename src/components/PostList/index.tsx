@@ -1,26 +1,17 @@
 import { PostCard } from '@/components/PostCard';
 import styles from './PostList.module.scss';
+import type { PostListProps } from './types';
 
-export const PostList = () => {
-  const posts = [
-    {
-      id: 1,
-      username: 'John',
-      title: 'Hello world',
-      content: 'This is my first post',
-      date: '25 minutes ago',
-    },
-  ];
-
+export const PostList = ({ posts, username, onDelete, onUpdate }: PostListProps) => {
   return (
     <section className={styles.postList}>
       {posts.map((post) => (
         <PostCard
           key={post.id}
-          username={post.username}
-          title={post.title}
-          content={post.content}
-          date={post.date}
+          {...post}
+          isOwner={post.username === username}
+          onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ))}
     </section>
