@@ -7,6 +7,7 @@ import { PostList } from './components/PostList';
 import { PostSort } from '@/components/PostSort';
 import { PostFilter } from '@/components/PostFilter';
 import { EmptyState } from '@/components/EmptyState';
+import { FeedSkeleton } from '@/components/FeedSkeleton';
 import { fetchPosts, createPost, deletePost, updatePost } from '@/api/posts';
 import styles from './App.module.scss';
 
@@ -93,7 +94,7 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <Header onLogout={handleLogout} />
+      <Header username={username} onLogout={handleLogout} />
 
       <main className={styles.main}>
         <CreatePost onCreate={handleCreatePost} />
@@ -106,8 +107,8 @@ const App = () => {
           </div>
         )}
 
-        {isLoading && <p>Loading posts...</p>}
-        {isError && <p>Failed to load posts.</p>}
+        {isLoading && <FeedSkeleton />}
+        {isError && <p className={styles.errorMessage}>Failed to load posts.</p>}
 
         {!isLoading &&
           !isError &&

@@ -6,6 +6,7 @@ import { formatDate } from '@/utils/formatDate';
 import { DeleteModal } from '@/components/DeleteModal';
 import { EditModal } from '@/components/EditModal';
 import { LikeButton } from '@/components/LikeButton';
+import { useRevealOnScroll } from '@/hooks/useRevealOnScroll';
 
 export const PostCard = ({
   id,
@@ -21,6 +22,8 @@ export const PostCard = ({
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
+
+  const { ref, isVisible } = useRevealOnScroll<HTMLElement>();
 
   const likedStorageKey = `post-liked-${id}`;
   const likesStorageKey = `post-likes-${id}`;
@@ -61,7 +64,10 @@ export const PostCard = ({
 
   return (
     <>
-      <article className={styles.postCard}>
+      <article
+        ref={ref}
+        className={`${styles.postCard} ${isVisible ? styles['postCard--visible'] : ''}`}
+      >
         <header className={styles.postCard__header}>
           <h3 className={styles.postCard__title}>{title}</h3>
 
