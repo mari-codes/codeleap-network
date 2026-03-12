@@ -24,8 +24,19 @@
     gap: vars.$space-md;
   }
 
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   &__actions {
     display: flex;
     justify-content: flex-end;
+  }
+
+  &__error {
+    font-size: vars.$font-xs;
+    color: vars.$color-danger;
   }
 }

@@ -9,13 +9,20 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const isDisabled = !title.trim() || !content.trim();
+  const MAX_TITLE_LENGTH = 60;
+
+  const trimmedTitle = title.trim();
+  const trimmedContent = content.trim();
+
+  const isTitleTooLong = title.length > MAX_TITLE_LENGTH;
+
+  const isDisabled = !trimmedTitle || !trimmedContent || isTitleTooLong;
 
   const handleCreate = () => {
     const trimmedTitle = title.trim();
     const trimmedContent = content.trim();
 
-    if (!trimmedTitle || !trimmedContent) {
+    if (!trimmedTitle || !trimmedContent || isTitleTooLong) {
       return;
     }
 
@@ -30,13 +37,21 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
       <h2 className={styles.createPost__title}>What’s on your mind?</h2>
 
       <div className={styles.createPost__form}>
-        <Input
-          label="Title"
-          placeholder="Hello world"
-          inputSize="lg"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
+        <div className={styles.createPost__field}>
+          <Input
+            label="Title"
+            placeholder="Hello world"
+            inputSize="lg"
+            maxLength={MAX_TITLE_LENGTH + 10}
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          {isTitleTooLong && (
+            <span className={styles.createPost__error}>
+              Title must be under {MAX_TITLE_LENGTH} characters
+            </span>
+          )}
+        </div>
 
         <Textarea
           label="Content"
