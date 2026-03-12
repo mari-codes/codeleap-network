@@ -11,6 +11,20 @@
     cursor: pointer;
     font-size: vars.$font-sm;
     color: vars.$color-text-secondary;
+    transition:
+      transform 0.15s ease,
+      opacity 0.15s ease;
+
+    &:hover {
+      color: vars.$color-primary;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: vars.$color-primary;
+      box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.25);
+      border-radius: vars.$radius-sm;
+    }
 
     &--active {
       color: vars.$color-primary;

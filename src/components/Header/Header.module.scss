@@ -25,5 +25,20 @@
     color: vars.$color-text-inverse;
     display: flex;
     align-items: center;
+
+    transition:
+      transform 0.15s ease,
+      opacity 0.15s ease;
+
+    &:hover {
+      color: vars.$color-text-hover-inverse;
+      transform: scale(1.05);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+      border-radius: vars.$radius-sm;
+    }
   }
 }

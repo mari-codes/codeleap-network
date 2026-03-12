@@ -44,6 +44,19 @@
     padding: 0;
     color: vars.$color-text-inverse;
     cursor: pointer;
+
+    transition: 0.15s ease;
+
+    &:hover {
+      transform: scale(1.08);
+      color: vars.$color-text-hover-inverse;
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+      border-radius: vars.$radius-sm;
+    }
   }
 
   &__body {

@@ -32,5 +32,11 @@
     &::placeholder {
       color: vars.$color-text-placeholder;
     }
+
+    &:focus {
+      outline: none;
+      border-color: vars.$color-primary;
+      box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.2);
+    }
   }
 }

@@ -8,8 +8,27 @@
   border: none;
   cursor: pointer;
   color: vars.$color-text-secondary;
+  transition: 0.15s ease;
+  &:hover {
+    color: vars.$color-primary;
+  }
 
   &--liked {
     color: vars.$color-danger;
+
+    transition:
+      transform 0.15s ease,
+      opacity 0.15s ease;
+
+    &:hover {
+      transform: scale(1.08);
+      color: vars.$color-danger-hover;
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.35);
+      border-radius: vars.$radius-sm;
+    }
   }
 }
