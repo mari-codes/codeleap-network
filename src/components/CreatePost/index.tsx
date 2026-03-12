@@ -42,6 +42,7 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
           label="Content"
           placeholder="Content here"
           textareaSize="lg"
+          maxLength={500}
           value={content}
           onChange={(event) => setContent(event.target.value)}
         />

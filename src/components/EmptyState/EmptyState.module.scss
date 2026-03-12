@@ -11,19 +11,20 @@
 
   &__icon {
     color: vars.$color-text-secondary;
-    opacity: 0.6;
+    opacity: 0.4;
     margin-bottom: vars.$space-sm;
   }
 
   &__title {
-    font-size: vars.$font-lg;
+    font-size: vars.$font-md;
     font-weight: vars.$font-weight-bold;
     color: vars.$color-text-primary;
   }
 
   &__text {
     margin-top: 8px;
-    font-size: vars.$font-md;
+    font-size: vars.$font-sm;
     color: vars.$color-text-secondary;
+    opacity: 0.7;
   }
 }
