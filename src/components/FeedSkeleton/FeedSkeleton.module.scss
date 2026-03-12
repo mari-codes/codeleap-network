@@ -1,0 +1,120 @@
+@use '../../styles/tokens' as vars;
+
+.feedSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-md;
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-xs;
+    min-height: 20px;
+  }
+
+  &__chip,
+  &__title,
+  &__icon,
+  &__line,
+  &__lineShort,
+  &__meta {
+    position: relative;
+    overflow: hidden;
+    background: vars.$color-bg-card;
+    border: 1px solid vars.$color-border-modal;
+    border-radius: vars.$radius-sm;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      animation: shimmer 1.4s infinite;
+    }
+  }
+
+  &__chip {
+    height: 14px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+
+    &:nth-child(1) {
+      width: 24px;
+    }
+
+    &:nth-child(2) {
+      width: 60px;
+    }
+
+    &:nth-child(3) {
+      width: 52px;
+    }
+  }
+
+  &__card {
+    background: vars.$color-bg-card;
+    border: 1px solid vars.$color-border-modal;
+    border-radius: vars.$radius-md;
+    overflow: hidden;
+  }
+
+  &__header {
+    height: 70px;
+    background: vars.$color-primary;
+    padding: 0 vars.$space-md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    width: 180px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+    border-radius: 50%;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-sm;
+    padding: vars.$space-md;
+  }
+
+  &__line {
+    width: 100%;
+    height: 14px;
+  }
+
+  &__lineShort {
+    width: 70%;
+    height: 14px;
+  }
+
+  &__footer {
+    display: flex;
+    gap: vars.$space-sm;
+    padding: 0 vars.$space-md vars.$space-md;
+  }
+
+  &__meta {
+    width: 90px;
+    height: 14px;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
