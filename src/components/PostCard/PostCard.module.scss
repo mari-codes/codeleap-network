@@ -6,7 +6,12 @@
   background: vars.$color-bg-card;
   border: 1px solid vars.$color-border-modal;
   border-radius: vars.$radius-md;
-  overflow: hidden;
+
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: vars.$color-primary;
+  }
 
   &__header {
     height: 70px;

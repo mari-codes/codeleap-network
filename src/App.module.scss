@@ -14,3 +14,17 @@
   margin: 0 auto;
   padding: 24px 0;
 }
+
+.feedControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background: vars.$color-text-secondary;
+  opacity: 0.3;
+}

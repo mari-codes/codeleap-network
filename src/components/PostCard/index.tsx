@@ -95,7 +95,6 @@ export const PostCard = ({
           </div>
 
           <p className={styles.postCard__content}>{content}</p>
-
           <div className={styles.postCard__footer}>
             <LikeButton liked={liked} count={likes} onToggle={handleToggleLike} />
           </div>

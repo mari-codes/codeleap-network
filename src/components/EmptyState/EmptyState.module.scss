@@ -1,0 +1,29 @@
+@use '../../styles/tokens' as vars;
+
+.emptyState {
+  width: 100%;
+  max-width: 752px;
+  border: 1px solid vars.$color-border-modal;
+  border-radius: vars.$radius-md;
+  padding: 40px 24px;
+  text-align: center;
+  background: vars.$color-bg-card;
+
+  &__icon {
+    color: vars.$color-text-secondary;
+    opacity: 0.6;
+    margin-bottom: vars.$space-sm;
+  }
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-primary;
+  }
+
+  &__text {
+    margin-top: 8px;
+    font-size: vars.$font-md;
+    color: vars.$color-text-secondary;
+  }
+}

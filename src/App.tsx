@@ -4,11 +4,16 @@ import { SignupModal } from './components/SignupModal';
 import { CreatePost } from './components/CreatePost';
 import { Header } from './components/Header';
 import { PostList } from './components/PostList';
+import { PostSort } from '@/components/PostSort';
+import { PostFilter } from '@/components/PostFilter';
+import { EmptyState } from '@/components/EmptyState';
 import { fetchPosts, createPost, deletePost, updatePost } from '@/api/posts';
 import styles from './App.module.scss';
 
 const App = () => {
   const [username, setUsername] = useState(() => localStorage.getItem('username') || '');
+  const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest');
+  const [filterBy, setFilterBy] = useState<'all' | 'mine'>('all');
 
   const queryClient = useQueryClient();
 
@@ -29,6 +34,20 @@ const App = () => {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
+  });
+
+  const filteredPosts =
+    filterBy === 'mine' ? posts.filter((post) => post.username === username) : posts;
+
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    const dateA = new Date(a.created_datetime).getTime();
+    const dateB = new Date(b.created_datetime).getTime();
+
+    if (sortBy === 'newest') {
+      return dateB - dateA;
+    }
+
+    return dateA - dateB;
   });
 
   const createPostMutation = useMutation({
@@ -75,20 +94,33 @@ const App = () => {
   return (
     <div className={styles.container}>
       <Header onLogout={handleLogout} />
+
       <main className={styles.main}>
         <CreatePost onCreate={handleCreatePost} />
+
+        {!isLoading && !isError && (
+          <div className={styles.feedControls}>
+            <PostFilter value={filterBy} onChange={setFilterBy} />
+            <span className={styles.divider}></span>
+            <PostSort value={sortBy} onChange={setSortBy} />
+          </div>
+        )}
 
         {isLoading && <p>Loading posts...</p>}
         {isError && <p>Failed to load posts.</p>}
 
-        {!isLoading && !isError && (
-          <PostList
-            posts={posts}
-            username={username}
-            onDelete={handleDeletePost}
-            onUpdate={handleUpdatePost}
-          />
-        )}
+        {!isLoading &&
+          !isError &&
+          (sortedPosts.length === 0 ? (
+            <EmptyState type={filterBy} />
+          ) : (
+            <PostList
+              posts={sortedPosts}
+              username={username}
+              onDelete={handleDeletePost}
+              onUpdate={handleUpdatePost}
+            />
+          ))}
       </main>
     </div>
   );
