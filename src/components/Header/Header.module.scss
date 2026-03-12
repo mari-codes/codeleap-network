@@ -18,6 +18,19 @@
     font-weight: vars.$font-weight-bold;
   }
 
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-sm;
+  }
+
+  .header__divider {
+    width: 1px;
+    height: 16px;
+    background: vars.$color-text-inverse;
+    opacity: 0.6;
+  }
+
   &__logout {
     background: transparent;
     border: none;

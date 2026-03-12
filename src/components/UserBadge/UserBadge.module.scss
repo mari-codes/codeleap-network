@@ -1,0 +1,7 @@
+@use '../../styles/tokens' as vars;
+
+.userBadge {
+  font-size: vars.$font-sm;
+  color: vars.$color-text-inverse;
+  opacity: 0.9;
+}
