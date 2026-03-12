@@ -1,8 +1,11 @@
 import styles from './DeleteModal.module.scss';
 import Button from '@/components/Button';
 import type { DeleteModalProps } from './types';
+import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
 
 export const DeleteModal = ({ isOpen, onCancel, onConfirm }: DeleteModalProps) => {
+  useLockBodyScroll();
+
   if (!isOpen) return null;
 
   return (

@@ -4,10 +4,13 @@ import Button from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/TextArea';
 import type { EditModalProps } from './types';
+import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
 
 export const EditModal = ({ isOpen, title, content, onCancel, onSave }: EditModalProps) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newContent, setNewContent] = useState(content);
+
+  useLockBodyScroll();
 
   if (!isOpen) return null;
 

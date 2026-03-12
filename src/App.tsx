@@ -8,6 +8,7 @@ import { PostSort } from '@/components/PostSort';
 import { PostFilter } from '@/components/PostFilter';
 import { EmptyState } from '@/components/EmptyState';
 import { FeedSkeleton } from '@/components/FeedSkeleton';
+import { LogoutModal } from '@/components/LogoutModal';
 import { fetchPosts, createPost, deletePost, updatePost } from '@/api/posts';
 import styles from './App.module.scss';
 
@@ -15,6 +16,7 @@ const App = () => {
   const [username, setUsername] = useState(() => localStorage.getItem('username') || '');
   const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest');
   const [filterBy, setFilterBy] = useState<'all' | 'mine'>('all');
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -23,9 +25,18 @@ const App = () => {
     setUsername(name);
   };
 
-  const handleLogout = () => {
+  const handleOpenLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const handleCloseLogoutModal = () => {
+    setIsLogoutModalOpen(false);
+  };
+
+  const handleConfirmLogout = () => {
     localStorage.removeItem('username');
     setUsername('');
+    setIsLogoutModalOpen(false);
   };
 
   const {
@@ -94,7 +105,7 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <Header username={username} onLogout={handleLogout} />
+      <Header username={username} onLogout={handleOpenLogoutModal} />
 
       <main className={styles.main}>
         <CreatePost onCreate={handleCreatePost} />
@@ -123,6 +134,10 @@ const App = () => {
             />
           ))}
       </main>
+
+      {isLogoutModalOpen && (
+        <LogoutModal onCancel={handleCloseLogoutModal} onConfirm={handleConfirmLogout} />
+      )}
     </div>
   );
 };
