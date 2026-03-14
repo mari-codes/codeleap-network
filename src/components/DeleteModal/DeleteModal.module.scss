@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .deleteModalOverlay {
   position: fixed;
@@ -26,15 +27,29 @@
   justify-content: space-between;
   gap: vars.$space-md;
 
+  @include mix.mobile {
+    width: 100%;
+    max-width: 90%;
+    padding: vars.$space-sm;
+  }
+
   &__title {
     font-size: vars.$font-lg;
     font-weight: vars.$font-weight-bold;
     color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
     gap: vars.$space-sm;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
   }
 }

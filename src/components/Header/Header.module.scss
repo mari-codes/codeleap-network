@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .header {
   width: 100%;
@@ -10,18 +11,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include mix.mobile {
+      padding: vars.$space-md vars.$space-sm;
+    }
   }
 
   &__title {
     color: vars.$color-text-inverse;
     font-size: vars.$font-lg;
     font-weight: vars.$font-weight-bold;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
+  }
+
+  &__logoutIcon {
+    width: 28px;
+    height: 28px;
+    color: vars.$color-text-inverse;
+
+    @include mix.mobile {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   .header__actions {
     display: flex;
     align-items: center;
     gap: vars.$space-sm;
+    min-width: 0;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
   }
 
   .header__divider {
@@ -29,13 +54,16 @@
     height: 16px;
     background: vars.$color-text-inverse;
     opacity: 0.6;
+
+    @include mix.mobile {
+      height: 12px;
+    }
   }
 
   &__logout {
     background: transparent;
     border: none;
     cursor: pointer;
-    color: vars.$color-text-inverse;
     display: flex;
     align-items: center;
 

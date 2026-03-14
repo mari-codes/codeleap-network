@@ -1,10 +1,15 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .inputField {
   display: flex;
   flex-direction: column;
   gap: vars.$space-xs;
   width: 100%;
+
+  @include mix.mobile {
+    gap: vars.$space-xxs;
+  }
 
   &--sm {
     max-width: 452px;
@@ -21,6 +26,10 @@
   &__label {
     font-size: vars.$font-sm;
     color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
   }
 
   &__control {
@@ -31,6 +40,11 @@
     border-radius: vars.$radius-sm;
     color: vars.$color-text-primary;
     font-size: vars.$font-xs;
+
+    @include mix.mobile {
+      height: 28px;
+      font-size: vars.$font-xxs;
+    }
 
     &::placeholder {
       color: vars.$color-text-placeholder;

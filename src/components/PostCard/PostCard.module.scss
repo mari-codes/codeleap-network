@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .postCard {
   width: 100%;
@@ -32,18 +33,45 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mix.mobile {
+      height: 60px;
+      padding: vars.$space-sm;
+    }
   }
 
   &__title {
     font-size: vars.$font-lg;
     font-weight: vars.$font-weight-bold;
     color: vars.$color-text-inverse;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
   }
 
   &__actions {
     display: flex;
     align-items: center;
     gap: vars.$space-md;
+
+    @include mix.tablet {
+      gap: vars.$space-sm;
+    }
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
+  }
+
+  &__actionIcon {
+    width: 30px;
+    height: 30px;
+
+    @include mix.mobile {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__actionButton {
@@ -74,6 +102,10 @@
     padding: vars.$space-md;
     display: flex;
     flex-direction: column;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+    }
   }
 
   &__meta {
@@ -81,18 +113,30 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: vars.$space-sm;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
   }
 
   &__author {
     font-size: vars.$font-md;
     font-weight: vars.$font-weight-bold;
     color: vars.$color-text-secondary;
+
+    @include mix.mobile {
+      font-size: vars.$font-sm;
+    }
   }
 
   &__date {
     font-size: vars.$font-md;
     font-weight: vars.$font-weight-regular;
     color: vars.$color-text-secondary;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
   }
 
   &__content {
@@ -100,11 +144,19 @@
     font-weight: vars.$font-weight-regular;
     color: vars.$color-text-primary;
     word-break: break-word;
+
+    @include mix.mobile {
+      font-size: vars.$font-sm;
+    }
   }
 
   &__footer {
     margin-top: vars.$space-md;
     display: flex;
     align-items: center;
+
+    @include mix.mobile {
+      margin-top: vars.$space-sm;
+    }
   }
 }

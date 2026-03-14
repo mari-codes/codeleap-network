@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .feedSkeleton {
   display: flex;
@@ -67,6 +68,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include mix.mobile {
+      height: 60px;
+      padding: vars.$space-sm;
+    }
   }
 
   &__title {
@@ -74,6 +80,10 @@
     height: 18px;
     background: rgba(255, 255, 255, 0.18);
     border: none;
+
+    @include mix.mobile {
+      width: 140px;
+    }
   }
 
   &__icon {
@@ -89,6 +99,11 @@
     flex-direction: column;
     gap: vars.$space-sm;
     padding: vars.$space-md;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+      gap: vars.$space-xs;
+    }
   }
 
   &__line {
@@ -105,11 +120,19 @@
     display: flex;
     gap: vars.$space-sm;
     padding: 0 vars.$space-md vars.$space-md;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+    }
   }
 
   &__meta {
     width: 90px;
     height: 14px;
+
+    @include mix.mobile {
+      width: 70px;
+    }
   }
 }
 

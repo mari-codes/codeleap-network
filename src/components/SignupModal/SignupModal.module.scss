@@ -1,4 +1,5 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .signupModal {
   min-height: 100dvh;
@@ -19,6 +20,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+      width: 100%;
+      max-width: 90%;
+      min-height: 150px;
+    }
   }
 
   &__form {
@@ -26,17 +34,29 @@
     flex-direction: column;
     gap: vars.$space-sm;
     flex: 1;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
   }
 
   &__title {
     font-size: vars.$font-lg;
     font-weight: vars.$font-weight-bold;
     color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
     margin-top: vars.$space-sm;
+
+    @include mix.mobile {
+      margin-top: vars.$space-xs;
+    }
   }
 }

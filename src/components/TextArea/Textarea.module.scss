@@ -1,10 +1,15 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .textareaField {
   display: flex;
   flex-direction: column;
   gap: vars.$space-xs;
   width: 100%;
+
+  @include mix.mobile {
+    gap: vars.$space-xxs;
+  }
 
   &--md {
     max-width: 612px;
@@ -17,6 +22,10 @@
   &__label {
     font-size: vars.$font-sm;
     color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
   }
 
   &__control {
@@ -30,6 +39,11 @@
     font-size: vars.$font-xs;
     resize: none;
     overflow: hidden;
+
+    @include mix.mobile {
+      min-height: 60px;
+      font-size: vars.$font-xxs;
+    }
 
     &::placeholder {
       color: vars.$color-text-placeholder;

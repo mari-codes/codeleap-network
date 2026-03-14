@@ -1,7 +1,17 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .userBadge {
   font-size: vars.$font-sm;
   color: vars.$color-text-inverse;
   opacity: 0.9;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include mix.mobile {
+    font-size: vars.$font-xs;
+    max-width: 90px;
+  }
 }

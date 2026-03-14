@@ -104,22 +104,22 @@ const App = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.app}>
       <Header username={username} onLogout={handleOpenLogoutModal} />
 
-      <main className={styles.main}>
+      <main className={styles.app__main}>
         <CreatePost onCreate={handleCreatePost} />
 
         {!isLoading && !isError && (
-          <div className={styles.feedControls}>
+          <div className={styles.app__feedControls}>
             <PostFilter value={filterBy} onChange={setFilterBy} />
-            <span className={styles.divider}></span>
+            <span className={styles.app__divider}></span>
             <PostSort value={sortBy} onChange={setSortBy} />
           </div>
         )}
 
         {isLoading && <FeedSkeleton />}
-        {isError && <p className={styles.errorMessage}>Failed to load posts.</p>}
+        {isError && <p className={styles.app__errorMessage}>Failed to load posts.</p>}
 
         {!isLoading &&
           !isError &&

@@ -1,9 +1,14 @@
 @use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
 
 .postFilter {
   display: flex;
   justify-content: flex-start;
   gap: vars.$space-xs;
+
+  @include mix.mobile {
+    gap: vars.$space-xxs;
+  }
 
   &__button {
     background: none;
@@ -14,6 +19,10 @@
     transition:
       transform 0.15s ease,
       opacity 0.15s ease;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
 
     &:hover {
       color: vars.$color-primary;

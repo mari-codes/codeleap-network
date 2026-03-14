@@ -20,7 +20,7 @@ export const Header = ({ username, onLogout }: HeaderProps) => {
             onClick={onLogout}
             aria-label="Logout"
           >
-            <Icon icon="mdi:logout" width="28" />
+            <Icon icon="mdi:logout" className={styles.header__logoutIcon} />
           </button>
         </div>
       </div>

@@ -79,7 +79,7 @@ export const PostCard = ({
                 aria-label="Delete post"
                 onClick={() => setIsDeleteOpen(true)}
               >
-                <Icon icon="ic:baseline-delete-forever" width="30" />
+                <Icon icon="ic:baseline-delete-forever" className={styles.postCard__actionIcon} />
               </button>
 
               <button
@@ -88,7 +88,7 @@ export const PostCard = ({
                 aria-label="Edit post"
                 onClick={() => setIsEditOpen(true)}
               >
-                <Icon icon="bx:bx-edit" width="30" />
+                <Icon icon="bx:bx-edit" className={styles.postCard__actionIcon} />
               </button>
             </div>
           )}
