@@ -99,7 +99,7 @@
     @include mix.flex-center(column, flex-start, stretch);
 
     padding: vars.$space-md;
-    
+
     @include mix.mobile {
       padding: vars.$space-sm;
     }

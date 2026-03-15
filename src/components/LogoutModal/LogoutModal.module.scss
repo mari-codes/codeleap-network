@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .logoutModalOverlay {
-   @include mix.flex-center();
+  @include mix.flex-center();
 
   position: fixed;
   inset: 0;
@@ -39,7 +39,7 @@
 
   &__actions {
     @include mix.flex-center(row, flex-end);
-    
+
     gap: vars.$space-sm;
 
     @include mix.mobile {

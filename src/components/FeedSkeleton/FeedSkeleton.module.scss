@@ -94,8 +94,8 @@
   }
 
   &__body {
-     @include mix.flex-center(column, flex-start, stretch);
-     
+    @include mix.flex-center(column, flex-start, stretch);
+
     gap: vars.$space-sm;
     padding: vars.$space-md;
 

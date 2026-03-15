@@ -3,7 +3,7 @@
 
 .textareaField {
   @include mix.flex-center(column, flex-start, stretch);
-  
+
   gap: vars.$space-xs;
   width: 100%;
 

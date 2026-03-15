@@ -3,7 +3,7 @@
 
 .button {
   @include mix.flex-center($display: inline-flex);
-  
+
   height: 32px;
   border-radius: vars.$radius-sm;
   font-size: vars.$font-sm;

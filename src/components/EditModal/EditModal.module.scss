@@ -41,7 +41,7 @@
 
   &__actions {
     @include mix.flex-center(row, flex-end);
-    
+
     gap: vars.$space-sm;
 
     @include mix.mobile {

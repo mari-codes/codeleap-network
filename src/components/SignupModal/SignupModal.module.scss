@@ -28,7 +28,7 @@
 
   &__form {
     @include mix.flex-center(column, flex-start, stretch);
-    
+
     gap: vars.$space-sm;
     flex: 1;
 
