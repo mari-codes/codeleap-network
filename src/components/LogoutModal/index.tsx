@@ -1,41 +1,17 @@
-import { useEffect } from 'react';
-import styles from './LogoutModal.module.scss';
 import Button from '@/components/Button';
-import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
+import { Modal } from '@/components/Modal';
 import type { LogoutModalProps } from './types';
 
-export const LogoutModal = ({ onConfirm, onCancel }: LogoutModalProps) => {
-  useLockBodyScroll();
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onCancel();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onCancel]);
-
+export const LogoutModal = ({ onCancel, onConfirm }: LogoutModalProps) => {
   return (
-    <div className={styles.logoutModalOverlay} onClick={onCancel}>
-      <div className={styles.logoutModal} onClick={(event) => event.stopPropagation()}>
-        <h2 className={styles.logoutModal__title}>Ready to log out?</h2>
+    <Modal title="Ready to log out?" onCancel={onCancel}>
+      <Button variant="outline" onClick={onCancel}>
+        Cancel
+      </Button>
 
-        <div className={styles.logoutModal__actions}>
-          <Button variant="outline" onClick={onCancel}>
-            Cancel
-          </Button>
-
-          <Button variant="danger" onClick={onConfirm}>
-            Logout
-          </Button>
-        </div>
-      </div>
-    </div>
+      <Button variant="danger" onClick={onConfirm}>
+        Logout
+      </Button>
+    </Modal>
   );
 };
