@@ -33,41 +33,43 @@ A interface é responsiva e inclui **skeleton loaders** para melhorar a experiê
 Este projeto foi desenvolvido utilizando **React**, **TypeScript**, **Vite** e **SCSS modular com arquitetura BEM**, com gerenciamento de estado do servidor feito através do **React Query**.
 
 O frontend consome a API disponibilizada pela CodeLeap:
+
 ```
 https://dev.codeleap.co.uk/careers/
 ```
+
 ---
 
 ## Tech Stack
 
-| Tecnologia | Propósito |
-|---|---|
-| **React** | Biblioteca para construção da interface |
-| **TypeScript** | Tipagem estática e segurança de tipos |
-| **Vite** | Servidor de desenvolvimento e ferramenta de build |
-| **SCSS (Sass Modules)** | Estilização dos componentes |
-| **BEM** | Metodologia de organização de CSS |
-| **React Query** | Gerenciamento de estado do servidor |
-| **Prettier** | Formatação automática do código |
-| **Custom Hooks** | Separação e reutilização de lógica |
+| Tecnologia              | Propósito                                         |
+| ----------------------- | ------------------------------------------------- |
+| **React**               | Biblioteca para construção da interface           |
+| **TypeScript**          | Tipagem estática e segurança de tipos             |
+| **Vite**                | Servidor de desenvolvimento e ferramenta de build |
+| **SCSS (Sass Modules)** | Estilização dos componentes                       |
+| **BEM**                 | Metodologia de organização de CSS                 |
+| **React Query**         | Gerenciamento de estado do servidor               |
+| **Prettier**            | Formatação automática do código                   |
+| **Custom Hooks**        | Separação e reutilização de lógica                |
 
 ---
 
 ## Funcionalidades da Aplicação
 
-- Criar posts  
-- Editar posts  
-- Deletar posts  
-- Curtir posts  
+- Criar posts
+- Editar posts
+- Deletar posts
+- Curtir posts
 
 - Filtrar o feed por:
   - posts mais recentes
   - todos os posts
   - apenas posts do usuário
 
-- Layout responsivo  
-- Skeleton loaders durante carregamento de dados  
-- Componentes modulares e reutilizáveis  
+- Layout responsivo
+- Skeleton loaders durante carregamento de dados
+- Componentes modulares e reutilizáveis
 - Separação clara de lógica através de **custom hooks**
 
 ---
@@ -88,7 +90,7 @@ Exemplo de query:
 ```ts
 const { data, isLoading } = useQuery({
   queryKey: ['posts'],
-  queryFn: fetchPosts
+  queryFn: fetchPosts,
 });
 ```
 

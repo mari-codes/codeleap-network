@@ -37,38 +37,43 @@ The frontend consumes the API provided by CodeLeap:
 ```
 https://dev.codeleap.co.uk/careers/
 ```
+
 ---
+
 ## Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| **React** | UI library |
-| **TypeScript** | Type safety and application logic |
-| **Vite** | Development server and build tool |
-| **SCSS (Sass Modules)** | Component styling |
-| **BEM** | CSS architecture methodology |
-| **React Query** | Server state management |
-| **Prettier** | Code formatting |
-| **Custom Hooks** | Logic separation and reuse |
+| Technology              | Purpose                           |
+| ----------------------- | --------------------------------- |
+| **React**               | UI library                        |
+| **TypeScript**          | Type safety and application logic |
+| **Vite**                | Development server and build tool |
+| **SCSS (Sass Modules)** | Component styling                 |
+| **BEM**                 | CSS architecture methodology      |
+| **React Query**         | Server state management           |
+| **Prettier**            | Code formatting                   |
+| **Custom Hooks**        | Logic separation and reuse        |
+
 ---
 
 ## Application Features
 
-- Create posts  
-- Edit posts  
-- Delete posts  
-- Like posts  
+- Create posts
+- Edit posts
+- Delete posts
+- Like posts
 
 - Filter feed:
   - newest posts
   - all posts
   - only user posts
 
-- Responsive layout  
-- Loading skeletons while fetching data  
-- Modular and reusable components  
+- Responsive layout
+- Loading skeletons while fetching data
+- Modular and reusable components
 - Clean separation of logic using custom hooks
+
 ---
+
 ## State Management
 
 Server state is handled using **React Query**.
@@ -85,12 +90,14 @@ Example query:
 ```ts
 const { data, isLoading } = useQuery({
   queryKey: ['posts'],
-  queryFn: fetchPosts
+  queryFn: fetchPosts,
 });
 ```
+
 Mutations automatically invalidate the posts cache to keep the UI updated
 
 ---
+
 ## Styling
 
 The project uses **SCSS Modules** combined with the **BEM methodology**.
@@ -103,12 +110,14 @@ Benefits:
 - easier maintenance
 
 Example naming pattern:
+
 ```
 postCard
 postCard__header
 postCard__title
 postCard__actions
 ```
+
 ---
 
 ## Responsive Design
@@ -117,9 +126,9 @@ The interface is fully responsive using Sass mixins and breakpoints.
 
 Example breakpoints:
 
-- mobile  
-- tablet  
-- desktop  
+- mobile
+- tablet
+- desktop
 
 Layout adjustments ensure usability across mobile, tablet, and desktop screens.
 
@@ -132,6 +141,7 @@ The application displays **skeleton loaders** while fetching posts.
 This improves perceived performance and avoids layout shifts.
 
 ---
+
 ## Development
 
 Install dependencies:
