@@ -4,6 +4,22 @@
 
 - [English](../README.md)
 
+## Preview
+
+### Feed
+
+![Feed](/docs/preview/feed.png)
+
+### Skeleton de Carregamento
+
+![Skeleton](/docs/preview/skeleton.png)
+
+### Criar Post
+
+![Create Post](/docs/preview/post.png)
+
+---
+
 Aplicação frontend do **CodeLeapNetwork**, um pequeno feed social onde usuários podem criar, editar, deletar e interagir com posts.
 
 A aplicação permite que os usuários publiquem posts, editem ou excluam seus próprios posts, curtam posts e filtrem o feed por:

@@ -4,6 +4,22 @@
 
 - [Português (Brasil)](./docs/README.pt-BR.md)
 
+## Preview
+
+### Feed
+
+![Feed](./docs/preview/feed.png)
+
+### Loading Skeleton
+
+![Skeleton](./docs/preview/skeleton.png)
+
+### Create Post
+
+![Create Post](./docs/preview/post.png)
+
+---
+
 Frontend application for **CodeLeapNetwork**, a small social feed where users can create, edit, delete, and interact with posts.
 
 The application allows users to publish posts, edit or delete their own posts, like posts, and filter the feed by:
