@@ -2,15 +2,14 @@
 @use '../../styles/mixins' as mix;
 
 .createPost {
+  @include mix.flex-center(column, flex-start, stretch);
+
   width: 100%;
   max-width: 752px;
   background: vars.$color-bg-card;
   border: 1px solid vars.$color-border-modal;
   border-radius: vars.$radius-md;
   padding: vars.$space-md;
-
-  display: flex;
-  flex-direction: column;
   gap: vars.$space-sm;
 
   @include mix.mobile {
@@ -28,8 +27,8 @@
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include mix.flex-center(column, flex-start, stretch);
+
     gap: vars.$space-md;
 
     @include mix.mobile {
@@ -38,8 +37,8 @@
   }
 
   &__field {
-    display: flex;
-    flex-direction: column;
+    @include mix.flex-center(column, flex-start, stretch);
+
     gap: 4px;
   }
 

@@ -2,14 +2,13 @@
 @use '../../styles/mixins' as mix;
 
 .button {
+  @include mix.flex-center($display: inline-flex);
+  
   height: 32px;
   border-radius: vars.$radius-sm;
   font-size: vars.$font-sm;
   font-weight: vars.$font-weight-bold;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   transition: 0.15s ease;
 
   @include mix.mobile {

@@ -2,13 +2,14 @@
 @use '../../styles/mixins' as mix;
 
 .signupModal {
+  @include mix.flex-center();
+
   min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: vars.$color-bg-page;
 
   &__card {
+    @include mix.flex-center(column, space-between, stretch);
+
     width: 100%;
     max-width: 500px;
     min-height: 205px;
@@ -16,10 +17,6 @@
     border: 1px solid vars.$color-text-placeholder;
     border-radius: vars.$radius-md;
     padding: vars.$space-md;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     @include mix.mobile {
       padding: vars.$space-sm;
@@ -30,8 +27,8 @@
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include mix.flex-center(column, flex-start, stretch);
+    
     gap: vars.$space-sm;
     flex: 1;
 

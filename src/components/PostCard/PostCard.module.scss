@@ -26,13 +26,11 @@
   }
 
   &__header {
+    @include mix.flex-center(row, space-between, center);
+
     height: 70px;
     background: vars.$color-primary;
     padding: 0 vars.$space-md;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     @include mix.mobile {
       height: 60px;
@@ -51,8 +49,8 @@
   }
 
   &__actions {
-    display: flex;
-    align-items: center;
+    @include mix.flex-center(row, flex-start, center);
+
     gap: vars.$space-md;
 
     @include mix.tablet {
@@ -75,9 +73,8 @@
   }
 
   &__actionButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include mix.flex-center($display: inline-flex);
+
     background: transparent;
     border: none;
     padding: 0;
@@ -99,19 +96,18 @@
   }
 
   &__body {
-    padding: vars.$space-md;
-    display: flex;
-    flex-direction: column;
+    @include mix.flex-center(column, flex-start, stretch);
 
+    padding: vars.$space-md;
+    
     @include mix.mobile {
       padding: vars.$space-sm;
     }
   }
 
   &__meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include mix.flex-center(row, space-between, center);
+
     margin-bottom: vars.$space-sm;
 
     @include mix.mobile {

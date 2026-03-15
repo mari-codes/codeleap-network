@@ -2,13 +2,13 @@
 @use '../../styles/mixins' as mix;
 
 .feedSkeleton {
-  display: flex;
-  flex-direction: column;
+  @include mix.flex-center(column, flex-start, stretch);
+
   gap: vars.$space-md;
 
   &__controls {
-    display: flex;
-    align-items: center;
+    @include mix.flex-center(row, flex-start, center);
+
     gap: vars.$space-xs;
     min-height: 20px;
   }
@@ -62,12 +62,11 @@
   }
 
   &__header {
+    @include mix.flex-center(row, space-between, center);
+
     height: 70px;
     background: vars.$color-primary;
     padding: 0 vars.$space-md;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     @include mix.mobile {
       height: 60px;
@@ -95,8 +94,8 @@
   }
 
   &__body {
-    display: flex;
-    flex-direction: column;
+     @include mix.flex-center(column, flex-start, stretch);
+     
     gap: vars.$space-sm;
     padding: vars.$space-md;
 

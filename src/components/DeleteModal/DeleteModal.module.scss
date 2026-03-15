@@ -2,29 +2,23 @@
 @use '../../styles/mixins' as mix;
 
 .deleteModalOverlay {
+  @include mix.flex-center();
+
   position: fixed;
   inset: 0;
-
   background: vars.$color-overlay;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   z-index: 1000;
 }
 
 .deleteModal {
+  @include mix.flex-center(column, space-between, stretch);
+
   width: 660px;
   height: 146px;
   background: vars.$color-bg-card;
   border: 1px solid vars.$color-border-modal;
   border-radius: vars.$radius-md;
   padding: vars.$space-md;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   gap: vars.$space-md;
 
   @include mix.mobile {
@@ -44,8 +38,8 @@
   }
 
   &__actions {
-    display: flex;
-    justify-content: flex-end;
+    @include mix.flex-center(row, flex-end);
+    
     gap: vars.$space-sm;
 
     @include mix.mobile {

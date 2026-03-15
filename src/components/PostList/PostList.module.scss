@@ -2,8 +2,8 @@
 @use '../../styles/mixins' as mix;
 
 .postList {
-  display: flex;
-  flex-direction: column;
+  @include mix.flex-center(column, flex-start, stretch);
+  
   gap: vars.$space-md;
   margin-top: vars.$space-md;
 
