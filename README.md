@@ -4,6 +4,10 @@
 
 - [Português (Brasil)](./docs/README.pt-BR.md)
 
+## Live Demo
+
+[View Live Application](https://codeleap-network-mari.vercel.app)
+
 ## Preview
 
 ### Feed
