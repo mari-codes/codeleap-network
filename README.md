@@ -1,4 +1,8 @@
-# CodeLeapNetwork
+# CodeLeap Network
+
+## Live Demo
+
+[View Live Application](https://codeleap-network-mari.vercel.app)
 
 ## Read this in other languages
 
@@ -20,7 +24,7 @@
 
 ---
 
-Frontend application for **CodeLeapNetwork**, a small social feed where users can create, edit, delete, and interact with posts.
+Frontend application for **CodeLeap Network**, a small social feed where users can create, edit, delete, and interact with posts.
 
 The application allows users to publish posts, edit or delete their own posts, like posts, and filter the feed by:
 
