@@ -1,0 +1,84 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.header {
+  width: 100%;
+  background: vars.$color-primary;
+
+  &__content {
+    @include mix.flex-center(row, space-between, center);
+
+    max-width: 800px;
+    padding: 27px 37px;
+
+    @include mix.mobile {
+      padding: vars.$space-md vars.$space-sm;
+    }
+  }
+
+  &__title {
+    color: vars.$color-text-inverse;
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
+  }
+
+  &__logoutIcon {
+    width: 28px;
+    height: 28px;
+    color: vars.$color-text-inverse;
+
+    @include mix.mobile {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__actions {
+    @include mix.flex-center(row, flex-start, center);
+
+    gap: vars.$space-sm;
+    min-width: 0;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 16px;
+    background: vars.$color-text-inverse;
+    opacity: 0.6;
+
+    @include mix.mobile {
+      height: 12px;
+    }
+  }
+
+  &__logout {
+    @include mix.flex-center(row, flex-start, center);
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    transition:
+      transform 0.15s ease,
+      opacity 0.15s ease;
+
+    &:hover {
+      color: vars.$color-text-hover-inverse;
+      transform: scale(1.05);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+      border-radius: vars.$radius-sm;
+    }
+  }
+}

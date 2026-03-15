@@ -1,0 +1,33 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.postSort {
+  display: flex;
+  justify-content: flex-end;
+
+  &__button {
+    @include mix.flex-center($display: inline-flex);
+
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-sm;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
+
+    &:hover {
+      color: vars.$color-primary;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: vars.$color-primary;
+      box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.25);
+      border-radius: vars.$radius-sm;
+    }
+  }
+}

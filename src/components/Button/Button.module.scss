@@ -1,0 +1,81 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.button {
+  @include mix.flex-center($display: inline-flex);
+
+  height: 32px;
+  border-radius: vars.$radius-sm;
+  font-size: vars.$font-sm;
+  font-weight: vars.$font-weight-bold;
+  cursor: pointer;
+  transition: 0.15s ease;
+
+  @include mix.mobile {
+    height: 28px;
+    font-size: vars.$font-xs;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.35);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: vars.$color-disabled-bg;
+    color: vars.$color-disabled-text;
+    border-color: vars.$color-disabled-bg;
+    opacity: 0.7;
+  }
+
+  &--default {
+    width: 120px;
+  }
+
+  &--compact {
+    width: 111px;
+  }
+
+  &--primary {
+    background: vars.$color-primary;
+    color: vars.$color-text-inverse;
+    border: none;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-hover;
+    }
+  }
+
+  &--danger {
+    background: vars.$color-danger;
+    color: vars.$color-text-inverse;
+    border: none;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-danger-hover;
+    }
+  }
+
+  &--success {
+    background: vars.$color-success;
+    color: vars.$color-text-inverse;
+    border: none;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-success-hover;
+    }
+  }
+
+  &--outline {
+    background: vars.$color-bg-card;
+    color: vars.$color-text-primary;
+    border: 1px solid vars.$color-border-modal;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-bg-card;
+      color: vars.$color-primary;
+      border-color: vars.$color-primary;
+    }
+  }
+}

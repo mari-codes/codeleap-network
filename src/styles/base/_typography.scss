@@ -1,0 +1,8 @@
+@use '../tokens' as vars;
+
+body {
+  font-family: vars.$font-family-primary;
+  font-size: vars.$font-md;
+  font-weight: vars.$font-weight-regular;
+  color: vars.$color-text-primary;
+}

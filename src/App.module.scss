@@ -1,0 +1,47 @@
+@use './styles/tokens' as vars;
+@use './styles/mixins' as mix;
+
+.app {
+  width: 100%;
+  max-width: 800px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background-color: vars.$color-bg-card;
+
+  &__main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+    }
+  }
+
+  &__feedControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: vars.$space-md 0;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+      margin: vars.$space-sm 0;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 16px;
+    background: vars.$color-text-secondary;
+    opacity: 0.3;
+
+    @include mix.mobile {
+      height: 12px;
+    }
+  }
+
+  &__errorMessage {
+    color: vars.$color-danger;
+  }
+}

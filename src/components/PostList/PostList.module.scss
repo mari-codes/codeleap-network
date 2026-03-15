@@ -1,0 +1,14 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.postList {
+  @include mix.flex-center(column, flex-start, stretch);
+
+  gap: vars.$space-md;
+  margin-top: vars.$space-md;
+
+  @include mix.mobile {
+    gap: vars.$space-sm;
+    margin-top: vars.$space-sm;
+  }
+}

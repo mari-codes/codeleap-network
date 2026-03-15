@@ -1,0 +1,59 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.signupModal {
+  @include mix.flex-center();
+
+  min-height: 100dvh;
+  background: vars.$color-bg-page;
+
+  &__card {
+    @include mix.flex-center(column, space-between, stretch);
+
+    width: 100%;
+    max-width: 500px;
+    min-height: 205px;
+    background: vars.$color-bg-card;
+    border: 1px solid vars.$color-text-placeholder;
+    border-radius: vars.$radius-md;
+    padding: vars.$space-md;
+
+    @include mix.mobile {
+      padding: vars.$space-sm;
+      width: 100%;
+      max-width: 90%;
+      min-height: 150px;
+    }
+  }
+
+  &__form {
+    @include mix.flex-center(column, flex-start, stretch);
+
+    gap: vars.$space-sm;
+    flex: 1;
+
+    @include mix.mobile {
+      gap: vars.$space-xs;
+    }
+  }
+
+  &__title {
+    font-size: vars.$font-lg;
+    font-weight: vars.$font-weight-bold;
+    color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-md;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: vars.$space-sm;
+
+    @include mix.mobile {
+      margin-top: vars.$space-xs;
+    }
+  }
+}

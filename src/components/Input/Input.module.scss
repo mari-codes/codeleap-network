@@ -1,0 +1,59 @@
+@use '../../styles/tokens' as vars;
+@use '../../styles/mixins' as mix;
+
+.inputField {
+  @include mix.flex-center(column, flex-start, stretch);
+
+  gap: vars.$space-xs;
+  width: 100%;
+
+  @include mix.mobile {
+    gap: vars.$space-xxs;
+  }
+
+  &--sm {
+    max-width: 452px;
+  }
+
+  &--md {
+    max-width: 612px;
+  }
+
+  &--lg {
+    max-width: 704px;
+  }
+
+  &__label {
+    font-size: vars.$font-sm;
+    color: vars.$color-text-primary;
+
+    @include mix.mobile {
+      font-size: vars.$font-xs;
+    }
+  }
+
+  &__control {
+    height: 32px;
+    width: 100%;
+    padding: 0 10px;
+    border: 1px solid vars.$color-text-secondary;
+    border-radius: vars.$radius-sm;
+    color: vars.$color-text-primary;
+    font-size: vars.$font-xs;
+
+    @include mix.mobile {
+      height: 28px;
+      font-size: vars.$font-xxs;
+    }
+
+    &::placeholder {
+      color: vars.$color-text-placeholder;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: vars.$color-primary;
+      box-shadow: 0 0 0 2px rgba(118, 149, 236, 0.2);
+    }
+  }
+}
