@@ -1,73 +1,143 @@
-# React + TypeScript + Vite
+# CodeLeapNetwork
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Read this in other languages
 
-Currently, two official plugins are available:
+- [Português (Brasil)](./docs/README.pt-BR.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Frontend application for **CodeLeapNetwork**, a small social feed where users can create, edit, delete, and interact with posts.
 
-## React Compiler
+The application allows users to publish posts, edit or delete their own posts, like posts, and filter the feed by:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- newest posts
+- all posts
+- only their own posts
 
-## Expanding the ESLint configuration
+The interface is responsive and includes loading skeletons to improve the user experience while data is being fetched.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project was built using **React**, **TypeScript**, **Vite**, and **modular SCSS with BEM architecture**, with server state management handled by **React Query**.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The frontend consumes the API provided by CodeLeap:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```
+https://dev.codeleap.co.uk/careers/
+```
+---
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+| Technology | Purpose |
+|---|---|
+| **React** | UI library |
+| **TypeScript** | Type safety and application logic |
+| **Vite** | Development server and build tool |
+| **SCSS (Sass Modules)** | Component styling |
+| **BEM** | CSS architecture methodology |
+| **React Query** | Server state management |
+| **Prettier** | Code formatting |
+| **Custom Hooks** | Logic separation and reuse |
+---
+
+## Application Features
+
+- Create posts  
+- Edit posts  
+- Delete posts  
+- Like posts  
+
+- Filter feed:
+  - newest posts
+  - all posts
+  - only user posts
+
+- Responsive layout  
+- Loading skeletons while fetching data  
+- Modular and reusable components  
+- Clean separation of logic using custom hooks
+---
+## State Management
+
+Server state is handled using **React Query**.
+
+Benefits:
+
+- automatic caching
+- background refetching
+- loading and error states
+- simplified data mutations
+
+Example query:
+
+```ts
+const { data, isLoading } = useQuery({
+  queryKey: ['posts'],
+  queryFn: fetchPosts
+});
+```
+Mutations automatically invalidate the posts cache to keep the UI updated
+
+---
+## Styling
+
+The project uses **SCSS Modules** combined with the **BEM methodology**.
+
+Benefits:
+
+- scoped styles
+- predictable naming
+- modular CSS architecture
+- easier maintenance
+
+Example naming pattern:
+```
+postCard
+postCard__header
+postCard__title
+postCard__actions
+```
+---
+
+## Responsive Design
+
+The interface is fully responsive using Sass mixins and breakpoints.
+
+Example breakpoints:
+
+- mobile  
+- tablet  
+- desktop  
+
+Layout adjustments ensure usability across mobile, tablet, and desktop screens.
+
+---
+
+## Loading States
+
+The application displays **skeleton loaders** while fetching posts.
+
+This improves perceived performance and avoids layout shifts.
+
+---
+## Development
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
 ```
