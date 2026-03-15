@@ -32,6 +32,13 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
     setContent('');
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      handleCreate();
+    }
+  };
+
   return (
     <section className={styles.createPost}>
       <h2 className={styles.createPost__title}>What’s on your mind?</h2>
@@ -46,6 +53,7 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
+
           {isTitleTooLong && (
             <span className={styles.createPost__error}>
               Title must be under {MAX_TITLE_LENGTH} characters
@@ -60,6 +68,7 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
           maxLength={500}
           value={content}
           onChange={(event) => setContent(event.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <div className={styles.createPost__actions}>
