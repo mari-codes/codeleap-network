@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { SignupModal } from './components/SignupModal';
 import { CreatePost } from './components/CreatePost';
 import { Header } from './components/Header';
@@ -9,103 +8,41 @@ import { PostFilter } from '@/components/PostFilter';
 import { EmptyState } from '@/components/EmptyState';
 import { FeedSkeleton } from '@/components/FeedSkeleton';
 import { LogoutModal } from '@/components/LogoutModal';
-import { fetchPosts, createPost, deletePost, updatePost } from '@/api/posts';
+import { useUsername } from '@/hooks/useUsername';
+import { usePosts } from '@/hooks/usePosts';
+import { useVisiblePosts } from '@/hooks/useVisiblePosts';
 import styles from './App.module.scss';
+import type { FilterBy, SortBy } from './types/post';
 
 const App = () => {
-  const [username, setUsername] = useState(() => localStorage.getItem('username') || '');
-  const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest');
-  const [filterBy, setFilterBy] = useState<'all' | 'mine'>('all');
+  const { username, signup, logout } = useUsername();
+
+  const [sortBy, setSortBy] = useState<SortBy>('newest');
+  const [filterBy, setFilterBy] = useState<FilterBy>('all');
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  const queryClient = useQueryClient();
+  const { posts, isLoading, isError, handleCreatePost, handleDeletePost, handleUpdatePost } =
+    usePosts(username);
 
-  const handleSignup = (name: string) => {
-    localStorage.setItem('username', name);
-    setUsername(name);
-  };
-
-  const handleOpenLogoutModal = () => {
-    setIsLogoutModalOpen(true);
-  };
-
-  const handleCloseLogoutModal = () => {
-    setIsLogoutModalOpen(false);
-  };
+  const visiblePosts = useVisiblePosts({
+    posts,
+    username,
+    sortBy,
+    filterBy,
+  });
 
   const handleConfirmLogout = () => {
-    localStorage.removeItem('username');
-    setUsername('');
+    logout();
     setIsLogoutModalOpen(false);
-  };
-
-  const {
-    data: posts = [],
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ['posts'],
-    queryFn: fetchPosts,
-  });
-
-  const filteredPosts =
-    filterBy === 'mine' ? posts.filter((post) => post.username === username) : posts;
-
-  const sortedPosts = [...filteredPosts].sort((a, b) => {
-    const dateA = new Date(a.created_datetime).getTime();
-    const dateB = new Date(b.created_datetime).getTime();
-
-    if (sortBy === 'newest') {
-      return dateB - dateA;
-    }
-
-    return dateA - dateB;
-  });
-
-  const createPostMutation = useMutation({
-    mutationFn: createPost,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
-    },
-  });
-
-  const handleCreatePost = (title: string, content: string) => {
-    createPostMutation.mutate({
-      username,
-      title,
-      content,
-    });
-  };
-
-  const deletePostMutation = useMutation({
-    mutationFn: deletePost,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
-    },
-  });
-
-  const handleDeletePost = (id: number) => {
-    deletePostMutation.mutate(id);
-  };
-
-  const updatePostMutation = useMutation({
-    mutationFn: updatePost,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
-    },
-  });
-
-  const handleUpdatePost = (id: number, title: string, content: string) => {
-    updatePostMutation.mutate({ id, title, content });
   };
 
   if (!username) {
-    return <SignupModal onEnter={handleSignup} />;
+    return <SignupModal onEnter={signup} />;
   }
 
   return (
     <div className={styles.app}>
-      <Header username={username} onLogout={handleOpenLogoutModal} />
+      <Header username={username} onLogout={() => setIsLogoutModalOpen(true)} />
 
       <main className={styles.app__main}>
         <CreatePost onCreate={handleCreatePost} />
@@ -113,7 +50,7 @@ const App = () => {
         {!isLoading && !isError && (
           <div className={styles.app__feedControls}>
             <PostFilter value={filterBy} onChange={setFilterBy} />
-            <span className={styles.app__divider}></span>
+            <span className={styles.app__divider} aria-hidden="true"></span>
             <PostSort value={sortBy} onChange={setSortBy} />
           </div>
         )}
@@ -123,11 +60,11 @@ const App = () => {
 
         {!isLoading &&
           !isError &&
-          (sortedPosts.length === 0 ? (
+          (visiblePosts.length === 0 ? (
             <EmptyState type={filterBy} />
           ) : (
             <PostList
-              posts={sortedPosts}
+              posts={visiblePosts}
               username={username}
               onDelete={handleDeletePost}
               onUpdate={handleUpdatePost}
@@ -136,7 +73,7 @@ const App = () => {
       </main>
 
       {isLogoutModalOpen && (
-        <LogoutModal onCancel={handleCloseLogoutModal} onConfirm={handleConfirmLogout} />
+        <LogoutModal onCancel={() => setIsLogoutModalOpen(false)} onConfirm={handleConfirmLogout} />
       )}
     </div>
   );
