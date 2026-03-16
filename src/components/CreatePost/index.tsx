@@ -5,23 +5,21 @@ import { Textarea } from '@/components/TextArea';
 import Button from '@/components/Button';
 import type { CreatePostProps } from './types';
 
+const MAX_TITLE_LENGTH = 60;
+const MAX_CONTENT_LENGTH = 500;
+const TITLE_INPUT_MAX_LENGTH = MAX_TITLE_LENGTH + 10;
+
 export const CreatePost = ({ onCreate }: CreatePostProps) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
-  const MAX_TITLE_LENGTH = 60;
 
   const trimmedTitle = title.trim();
   const trimmedContent = content.trim();
 
   const isTitleTooLong = title.length > MAX_TITLE_LENGTH;
-
   const isDisabled = !trimmedTitle || !trimmedContent || isTitleTooLong;
 
   const handleCreate = () => {
-    const trimmedTitle = title.trim();
-    const trimmedContent = content.trim();
-
     if (!trimmedTitle || !trimmedContent || isTitleTooLong) {
       return;
     }
@@ -49,7 +47,7 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
             label="Title"
             placeholder="Hello world"
             inputSize="lg"
-            maxLength={MAX_TITLE_LENGTH + 10}
+            maxLength={TITLE_INPUT_MAX_LENGTH}
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
@@ -65,7 +63,7 @@ export const CreatePost = ({ onCreate }: CreatePostProps) => {
           label="Content"
           placeholder="Content here"
           textareaSize="lg"
-          maxLength={500}
+          maxLength={MAX_CONTENT_LENGTH}
           value={content}
           onChange={(event) => setContent(event.target.value)}
           onKeyDown={handleKeyDown}
